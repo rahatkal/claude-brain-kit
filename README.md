@@ -3,6 +3,7 @@
 A Markdown second brain for [Claude Code](https://claude.com/claude-code) with one rule most setups skip:
 **nothing gets saved as a fact until a separate checker confirms it against the raw source.**
 
+
 ## Does it actually work?
 Receipts from the author's own brain logs for 2026-10-16 and 2026-10-19:
 - 12 notes went through the verifier. 9 had at least one problem caught before saving; 3 passed on the first try.
@@ -53,7 +54,7 @@ This free kit stops bad facts getting in. The Pro pack makes the brain improve i
 - Lessons loop: candidate lessons with evidence that become rules on your yes, plus pruning of rules that never fire
 - `/decide` (decision memos that learn from past outcomes), `/review` (weekly review) and `/connect` (two-way note links)
 - Rival-strategist and agent role-contract prompts, stale-note and context-size tools
-Get it: (link coming)
+Get it: https://rajamagic3.gumroad.com/l/claude-brain-kit
 
 ## Customize
 - Add risky commands to `DANGER` in `tools/hooks/guard_hook.py`.

@@ -11,6 +11,7 @@ Receipts from the author's own brain logs for 2026-10-16 and 2026-10-19:
 - A draft called a serious reply "a joke" → FAIL → fixed → PASS 40/40.
 - A draft dropped a source's qualifier and overstated a claim → CONTESTED x2 → caveats added → PASS 27/27.
 - Earlier: a claim credited to 3 people when only 1 made it, plus a link to the wrong raw file → 2 UNSUPPORTED → fixed → PASS 17/17.
+- Full dated list of 17 catches: [CATCHES.md](CATCHES.md).
 
 ## Why
 AI note-takers summarise, round numbers and add things the source never said. Those mistakes then sit in your notes, and the next session trusts them. This kit stops them at the door:

@@ -1,0 +1,26 @@
+#!/bin/sh
+# 1) Enforce "verify before saving": a NEW note in notes/ must say "verified: yes".
+#    Edited legacy notes that are still unverified only get a warning (backfill them).
+# 2) Enforce "never store private keys, passwords, or API keys": tools/secret_scan.py
+#    scans only the lines added in the index (all file types) and blocks on a likely secret.
+#    A known-safe line can be exempted by adding the marker  secret-scan: allow  to that line.
+# Enabled by: git config core.hooksPath tools/hooks
+fail=0
+for f in $(git diff --cached --name-only --diff-filter=A -- 'notes/*.md'); do
+  if ! git show ":$f" | head -5 | grep -q '^verified: yes'; then
+    echo "BLOCKED: $f is new but not 'verified: yes' (run precheck + verifier first)"
+    fail=1
+  fi
+done
+for f in $(git diff --cached --name-only --diff-filter=M -- 'notes/*.md'); do
+  git show ":$f" | head -5 | grep -q '^verified: yes' || echo "warn: $f is still unverified"
+done
+root=$(git rev-parse --show-toplevel)
+py=$(command -v python || command -v python3 || command -v py)
+if [ -z "$py" ]; then
+  echo "BLOCKED: python not found; cannot run tools/secret_scan.py"
+  fail=1
+elif ! "$py" "$root/tools/secret_scan.py" --staged; then
+  fail=1
+fi
+exit $fail

@@ -21,11 +21,22 @@ Real entries from the author's own brain logs (`night-shift/log/`, Oct 2026). Ev
 | 2026-10-09 | Said every paper beat a baseline "only modestly", the opposite of the sources | FAIL | 2 fix rounds → 38/38 PASS |
 | 2026-10-09 | A fee of ~5% where the source said ~2% round-trip | FAIL + 12 UNSUPPORTED | Corrected; unfetched claims moved to "Not checked" |
 | 2026-10-11 | "Unanswered questions" when only 40 of 128 replies were captured | UNSUPPORTED | Reworded → 16/16 PASS |
+| 2026-10-12 | A reply "quoted" in paraphrase | FAIL | Real wording → PASS |
+| 2026-10-12 | A usage limit without the source's hedge; "currently" with no date | CONTESTED + 2 STALE | Caveat and dates added |
+| 2026-10-15 | Five takeaways that were the writer's own inferences, written as facts | 5 UNSUPPORTED | Labelled as inference |
+| 2026-10-16 | Two repliers credited with one joke; only one made it | FAIL | Split → 36/36 PASS |
+| 2026-10-16 | A size-capping script described as a drawdown "handbrake" | UNSUPPORTED | Rewritten to what the code does → 36/36 PASS |
+| 2026-10-16 | A summary of replies that ignored "first page only" | CONTESTED | Limit stated → 25/25 PASS |
+| 2026-10-19 | "Every job posting asks for years"; one of five didn't | FAIL | "4 of 5" → 36/36 PASS |
+| 2026-10-19 | A sincere reply filed under "jokes" | FAIL | Moved → 40/40 PASS |
 
 ## The pattern
 Most catches were not misread sources. They were words the writer added: "free", "paid", "only modestly", a unit, a third person. That is the mistake a summariser makes and a reader never notices. It's also the reason the checker reads the raw source, not a summary.
 
 Across 60 notes logged by 2026-10-11, 35 (58%) hit at least one FAIL before passing.
+
+## When the checker was wrong
+It happens, and it's logged too: on 2026-10-04 it flagged examples as missing that a text search showed were in the source (fix: give the verifier exact search strings), and on 2026-10-08 it flagged a product claim that was in the source. A false alarm costs a minute; a wrong fact saved as true costs every later session that trusts it.
 
 ## Where this comes from
 Each line is copied from a dated log entry, not written for this page. Set up the kit and your own `night-shift/log/` builds the same record for your notes.

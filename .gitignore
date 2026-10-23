@@ -1,2 +1,5 @@
 dist/
 night-shift/rule-fires.csv
+
+__pycache__/
+*.pyc

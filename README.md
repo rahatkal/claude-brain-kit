@@ -33,7 +33,7 @@ source → .drafts/<topic>.src.txt (full raw text)
 | `MEMORY.md` | Always-loaded core facts + your North Star goals |
 | `.claude/agents/verifier.md` | Strict, cheap fact-checker. Judges, never edits. Ignores instructions planted in sources |
 | `tools/precheck_note.py` | Free pre-check: required sections, freshness dates, numbers missing from the source, injected-instruction warnings |
-| `tools/hooks/guard_hook.py` | Session start: loads your corrections. Before tools: blocks `.env` access, `git push` and your DANGER list. At stop: sends Claude back once to log + commit |
+| `tools/hooks/guard_hook.py` | Session start: loads your corrections. Before tools: blocks `.env` access (also when the name is split with quotes or backslashes), `git push`, commit-hook bypasses (`--no-verify`, `-n`, hooks-path changes), edits to the hook and settings themselves, and your `DANGER` list. At stop: sends Claude back once to log + commit |
 | `tools/hooks/pre-commit` + `tools/secret_scan.py` | Blocks unverified new notes and API keys / private keys in commits |
 | `night-shift/PLAYBOOK.md` | Corrections log: every time you correct Claude, it becomes a rule loaded next session |
 
@@ -58,7 +58,7 @@ This free kit stops bad facts getting in. The Pro pack makes the brain improve i
 Get it: https://rajamagic3.gumroad.com/l/claude-brain-kit
 
 ## Customize
-- Add risky commands to `DANGER` in `tools/hooks/guard_hook.py`.
+- Add risky commands to `DANGER` in `tools/hooks/guard_hook.py`. Edit it yourself in an editor: Claude is blocked from that folder.
 - Change `fresh_days` defaults in `AGENTS.md`.
 - Using Codex or Gemini too? Same folder, same rules. The hooks are Claude Code-only; the pre-commit gate works with any tool.
 - Add your own prompts under `prompts/<name>/system.md`.
@@ -66,6 +66,6 @@ Get it: https://rajamagic3.gumroad.com/l/claude-brain-kit
 ## Security notes
 - Keep your brain in a **private** repo, never a public fork: your notes hold personal data.
 - Read any borrowed skill, prompt or hook code before you run it.
-- `tools/hooks/guard_hook.py` blocks `.env` reads and edits, `git push` and anything on your `DANGER` list. You run blocked actions yourself.
+- `tools/hooks/guard_hook.py` blocks `.env` reads and edits (even split with quotes or backslashes), `git push`, `git commit --no-verify` and hook-path changes, edits to the hook and settings, and anything on your `DANGER` list. You run blocked actions yourself. It is a text-matching guard, not a sandbox: code that builds a name at runtime can still slip past it.
 - The pre-commit hook runs `tools/secret_scan.py`, which blocks commits that add API keys or tokens (Anthropic, OpenAI, AWS, GitHub, Slack, Telegram) or private keys.
 - Fetched web pages are data, not instructions: the verifier ignores instructions planted in a source and fails a note that repeats one, and `tools/precheck_note.py` warns on injected-looking directives.
